@@ -1,10 +1,7 @@
 # Scrape the chat logs from TakeLessons
 
 ## What is this?
-If you're irritated that TakeLessons doesn't have an API or a way to export logs you can use this package to get at it.
-
-## Who is this for?
-If you have a TakeLessons account and want to get your own data out in an automated way. 
+If you noticed that TakeLessons doesn't have an API or a way to export your own data you can use this package to get at it.
 
 ## How do I use it?
 
@@ -22,7 +19,7 @@ If you have a TakeLessons account and want to get your own data out in an automa
 db = SomeDBStore()
 ####
 from takelessons_scraper import session, Scraper
-chromdriver_path = '/path/to/chromedriver'
+chromedriver_path = '/path/to/chromedriver'
 username = 'username'
 password = 'password'
 
@@ -34,4 +31,5 @@ with session(chromedriver_path) as tl_session:
         db.save(chat) # ugly html string
 ```
 
-
+## Notes:
+Please consider this a hobby project to be used as reference. Since it is a scraper I expect it to fail as regularly as the source is updated... which could be at any time and not within my control.
