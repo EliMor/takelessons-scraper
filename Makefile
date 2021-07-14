@@ -1,4 +1,4 @@
-VERSION=0.0.1
+VERSION=$(shell head -n 1 takelessons_scraper/__version__ | sed 's/v//')
 
 clean:
 	rm -r *egg-info || true
@@ -15,4 +15,4 @@ test:
 	pytest tests
 
 format:
-	black scraper
+	black takelessons_scraper
