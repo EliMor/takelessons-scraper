@@ -46,6 +46,7 @@ class Scraper:
         # trick to get the scroll down to work
         self.driver.find_element_by_tag_name('body').click()
         idx = 1
+        # Fix this selector
         xpath_pattern = '/html/body/div[4]/div[1]/div/div/div[2]/div/div[{idx}]/div[2]/div[4]/div'
         while True:
             time.sleep(10)
