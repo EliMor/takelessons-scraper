@@ -18,18 +18,17 @@ If you noticed that TakeLessons doesn't have an API or a way to export your own 
 # Assume some db object you can save your data to
 db = SomeDBStore()
 ####
-from takelessons_scraper import Scraper
+from takelessons_scraper import TakeLessonsScraper
 chromedriver_path = '/path/to/chromedriver'
 username = 'username'
 password = 'password'
 
-scraper = Scraper(chromedriver_path)
-
-# get login cookies if you need it
-cookies = scraper.get_login_cookies(username, password)
-# get chat log for a day
+scraper = TakeLessonsScraper(chromedriver_path)
+# login to load cookies behind scenes
+scraper.login(username, password)
+# get a block of chat data up to date
 chat_date = '2020-01-01'
-chat_log = scraper.get_chat_history(chat_date, cookies)
+chat_log = scraper.get_chat_history(chat_date) # Chat obj, can get raw json back
 db.save(chat_log)
 ```
 

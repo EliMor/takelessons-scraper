@@ -1,6 +1,7 @@
 import os
 
-from .scraper import Scraper, session
+from .takelessons_scraper import TakeLessonsScraper
+
 
 def get_version():
     filepath = os.path.join(os.path.dirname(__file__), "__version__")
