@@ -45,7 +45,7 @@ class TakeLessonsScraper:
             cookies = selenium_tools.convert_cookies_to_str(cookies)
 
         if not bool(user_agent):
-            user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:90.0) Gecko/20100101 Firefox/90.0"
+            user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36"
 
         headers = {
             "Cookie": cookies,
