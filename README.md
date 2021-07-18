@@ -10,6 +10,7 @@ If you noticed that TakeLessons doesn't have an API or a way to export your own 
 1. Install Chrome
 2. Find the correct selenium driver version for your install [here](https://chromedriver.chromium.org/downloads)
 3. Add it to PATH or make a note of where it is
+4. ```pip install takelessons-scraper```
 
 ### Example
 

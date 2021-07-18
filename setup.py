@@ -7,7 +7,10 @@ with open("./takelessons_scraper/__version__", "r") as f:
 this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
-    
+
+with open(path.join(this_directory, 'LICENSE'), encoding='utf-8') as f:
+    license = f.read() 
+
 requirements = [
 "requests>=2.25.1",
 "selenium>=3.141.0"
@@ -17,6 +20,7 @@ requirements_tests = [
     "pytest"
 ]
 
+
 setup(
     name="takelessons-scraper",
     version=version,
@@ -25,7 +29,7 @@ setup(
     description="Scrape chat content from TakeLessons.com",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    license="The Unlicense",
+    license=license,
     packages=['takelessons_scraper'],
     include_package_data=True,
     install_requires=requirements,
@@ -38,7 +42,5 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
-        # License
-        "License :: OSI Approved :: The Unlicense",
     ]
 )
