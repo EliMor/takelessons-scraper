@@ -69,6 +69,8 @@ class Chat:
         self.next_pull_day = self.processed_chat_log["next_pull_day"]
         self.teacher_chat = self.processed_chat_log["teacher_chat"]
         self.student_chat = self.processed_chat_log["student_chat"]
+        self.earliest_date = self.processed_chat_log["earliest_date"]
+        self.latest_date = self.processed_chat_log["latest_date"]
 
     def __str__(self):
         teacher_data = {
@@ -87,7 +89,7 @@ class Chat:
             for student in self.processed_chat_log["student_chat"]
         }
 
-        return f"<Teachers: {teacher_data}, Students: {student_data}>"
+        return f"<teachers: {teacher_data}, students: {student_data}, earliest_date: {self.earliest_date}, latest_date: {self.latest_date}>"
 
     @staticmethod
     def process_chat_log(chat_json):
@@ -95,11 +97,23 @@ class Chat:
         events, next_event = log["events"], log["nextEndDate"]
         moderator_chat = defaultdict(list)  # teacher : chat
         participant_chat = defaultdict(list)  # student : chat
+        min_date, max_date = None, None
         for event in events:
             chat_session = event["rawChatLogs"]
             for chat in chat_session:
                 try:
                     date = pendulum.parse(chat.get("date", None))
+                    if not bool(min_date):
+                        min_date = date
+                    else:
+                        if date < min_date:
+                            min_date = date
+                    if not bool(max_date):
+                        max_date = date
+                    else:
+                        if date > max_date:
+                            max_date = date
+
                 except pendulum.parsing.exceptions.ParserError:
                     date = chat.get("date", None)
                 name = chat.get("name", "")
@@ -114,4 +128,6 @@ class Chat:
             "teacher_chat": moderator_chat,
             "student_chat": participant_chat,
             "next_pull_day": next_event,
+            "earliest_date": min_date,
+            "latest_date": max_date,
         }
