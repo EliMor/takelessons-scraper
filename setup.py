@@ -9,9 +9,7 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
     
 requirements = [
-"beautifulsoup4>=4.9.3",
 "requests>=2.25.1",
-"Scrapy>=2.5.0",
 "selenium>=3.141.0"
 ]
 
