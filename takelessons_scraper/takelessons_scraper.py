@@ -1,12 +1,9 @@
 import time
 import json
-import requests
-
-import pendulum
-
-from datetime import datetime
 from collections import defaultdict
-from contextlib import contextmanager
+
+import requests
+import pendulum
 
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
