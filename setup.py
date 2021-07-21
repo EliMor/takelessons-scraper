@@ -13,7 +13,8 @@ with open(path.join(this_directory, 'LICENSE'), encoding='utf-8') as f:
 
 requirements = [
 "requests>=2.25.1",
-"selenium>=3.141.0"
+"selenium>=3.141.0",
+"pendulum>=2.1.2"
 ]
 
 requirements_tests = [
