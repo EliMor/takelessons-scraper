@@ -12,18 +12,15 @@ If you noticed that TakeLessons doesn't have an API or a way to export your own 
 3. Add it to PATH or make a note of where it is
 4. ```pip install takelessons-scraper```
 
-### Example
+### Example Usage:
 
-```python
-####
+```py 
 # Assume some db object you can save your data to
 db = SomeDBStore()
-####
 from takelessons_scraper import TakeLessonsScraper
 chromedriver_path = '/path/to/chromedriver'
 username = 'username'
 password = 'password'
-
 scraper = TakeLessonsScraper(chromedriver_path)
 # login to load cookies behind scenes
 scraper.login(username, password)
