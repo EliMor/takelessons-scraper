@@ -1,6 +1,7 @@
 import time
 import json
 from collections import defaultdict
+from json.decoder import JSONDecodeError
 
 import requests
 import pendulum
@@ -53,8 +54,14 @@ class TakeLessonsScraper:
         }
         response = requests.get(chat_ajax_url, headers=headers)
         if response.status_code == 200:
-            chat = Chat(json.loads(response.content))
-            return chat
+            try:
+                chat = Chat(json.loads(response.content))
+                return chat
+            except JSONDecodeError:
+                logging.error('json decode error, have you tried sleeping between calls?')
+                logging.info(chat_ajax_url)
+                logging.info(response.content)
+                raise
 
     def logout(self):
         self.driver.quit()

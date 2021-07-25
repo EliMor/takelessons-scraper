@@ -26,6 +26,7 @@ scraper = TakeLessonsScraper(chromedriver_path)
 scraper.login(username, password)
 # get a block of chat data up to date
 chat_date = '2020-01-01'
+# you may need to sleep a bit
 chat_log = scraper.get_chat_history(chat_date) # Chat obj, can get raw json back
 db.save(chat_log)
 ```
